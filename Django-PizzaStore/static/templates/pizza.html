@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="my-5 container">
+    {{ note }}
+    <form action="{% url 'pizzas' %}" method="post" class="needs-validation" novalidate>{% csrf_token %}
+        
+        {{ formset.management_form }}
+        
+        {% for form in formset %}
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    {{ form.topping1.label_tag }}
+                    {{ form.topping1 }}
+                    <div class="invalid-feedback">
+                        {{ form.topping1.errors }}
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.topping2.label_tag }}
+                    {{ form.topping2 }}
+                    <div class="invalid-feedback">
+                        {{ form.topping2.errors }}
+                    </div>
+                </div>
+                <!-- Add similar blocks for other form fields -->
+            </div>
+        {% endfor %}
+        
+        <div class="my-5 text-center">
+            <button type="submit" class="btn btn-success">Order Pizza</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
