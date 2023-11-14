@@ -5,7 +5,7 @@
 
     <h1>Order a Pizza</h1>
     {% if object_pk %}
-    <a href="{% url 'edit' pk=object_pk %}">Edit</a>
+    <a href="{% url 'edit_order' pk=object_pk %}">Edit</a>
     {% endif %}
     <br>
     <h3>{{ note }}</h3>
